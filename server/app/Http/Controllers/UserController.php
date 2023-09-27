@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Symfony\Component\Uid\Ulid;
 
 class UserController extends Controller
 {
@@ -29,7 +35,71 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-        dd($request->all());
+        $request->validate(
+            [
+                "owner_name" => 'required',
+                "company_name" => 'required',
+                "email" => 'required|email|unique:users',
+                "telephone" => 'required|min:11',
+                "cep" => 'required',
+                "address" => 'required',
+                "number" => 'required',
+                "neighborhood" => 'required',
+                "city" => 'required',
+                "state" => 'required',
+                "complement" => 'nullable',
+                "password" => 'required|confirmed|min:8',
+            ],
+            [
+                "owner_name" => 'Nome do proprietário da empresa é obrigatório',
+                "company_name" => 'Nome da empresa é obrigatório',
+                "email" => 'Email já em uso',
+                "telephone" => 'Telefone é obrigatório',
+                "cep" => 'CEP é obrigatório',
+                "address" => 'Rua é obrigatório',
+                "number" => 'Númeroé obrigatório',
+                "neighborhood" => 'Bairro é obrigatório',
+                "city" => 'Cidade é obrigatório',
+                "state" => 'Estado é obrigatório',
+                "password" => 'Senha é inválida',
+            ]
+        );
+
+        try {
+
+            $user = [
+                "owner_name" => $request->input('owner_name'),
+                "company_name" => $request->input('company_name'),
+                "email" => $request->input('email'),
+                "telephone" => $request->input('telephone'),
+                "cep" => $request->input('cep'),
+                "address" => $request->input('address'),
+                "number" => $request->input('number'),
+                "neighborhood" => $request->input('neighborhood'),
+                "city" => $request->input('city'),
+                "state" => $request->input('state'),
+                "complement" => $request->input('complement'),
+                "password" => Hash::make($request->input('password'))
+            ];
+
+            $userCreated = User::create($user);
+            if (!$userCreated) {
+                throw new Exception('Ocorreu um erro ao criar o usuário');
+            }
+
+            $auth = Auth::attempt([
+                "email" => $request->input('email'),
+                "password" => $request->input('password')
+            ]);
+
+            if (!$auth) {
+                throw new Exception('LOGIN_FAILED');
+            }
+
+            return response()->json('Usuário criado com sucesso', 200);
+        } catch (Exception $error) {
+            return response()->json($error->getMessage(), 404);
+        }
     }
 
     /**

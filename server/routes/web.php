@@ -9,10 +9,6 @@ use App\Http\Controllers\UserController;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function () {
-    return view('pages.user-create.index');
-});
-
 Route::controller(UserController::class)->group(function () {
     Route::get('/users/create', 'create')->name('users.create');
     Route::post('/users', 'store')->name('users.store');
