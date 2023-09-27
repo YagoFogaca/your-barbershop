@@ -17,6 +17,7 @@ $("#continue").on("click", function () {
 
         if (currentBlockIndex === 2) {
             $(this).attr("type", "submit");
+            $(this).text("Criar conta");
         }
 
         // Verifique se atingimos o último bloco
