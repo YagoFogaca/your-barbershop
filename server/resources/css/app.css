@@ -26,6 +26,10 @@ div.active-process-block {
     display: block;
 }
 
+div.active-process-block-flex {
+    display: flex;
+}
+
 button#loading {
     display: none;
 }
