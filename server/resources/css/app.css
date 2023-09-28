@@ -6,6 +6,10 @@ main {
     background-color: #e7e7e7;
 }
 
+main.main-variant {
+    min-height: calc(100vh - 76px);
+}
+
 section.container-auth {
     display: flex;
     align-items: center;
@@ -32,4 +36,13 @@ div.active-process-block-flex {
 
 button#loading {
     display: none;
+}
+
+nav.navbar-customize a.nav-link,
+nav.navbar-customize a.dropdown-item {
+    color: #2c86fd;
+}
+
+.navbar-nav .nav-link.show {
+    color: #2c86fd;
 }
