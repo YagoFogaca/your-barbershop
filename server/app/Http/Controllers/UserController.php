@@ -7,8 +7,6 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
-use Symfony\Component\Uid\Ulid;
 
 class UserController extends Controller
 {
@@ -99,6 +97,45 @@ class UserController extends Controller
             return response()->json('Usuário criado com sucesso', 200);
         } catch (Exception $error) {
             return response()->json($error->getMessage(), 404);
+        }
+    }
+
+    public function login()
+    {
+        if (Auth::check()) {
+            return redirect()->route('platform.index');
+        }
+        return view('pages.user-login.index');
+    }
+
+    public function authenticate(Request $request)
+    {
+        $request->validate([
+            "email" => 'required',
+            "password" => 'required',
+        ]);
+
+        try {
+            $auth = Auth::attempt([
+                "email" => $request->input('email'),
+                "password" => $request->input('password')
+            ], $request->input('remember'));
+
+            if (!$auth) {
+                throw new Exception('LOGIN_FAILED');
+            }
+
+            return response()->json(
+                'Login_success',
+                200
+            );
+        } catch (Exception $error) {
+            return response()->json(
+                ['message' => 'Email ou senha inválidos'],
+                400,
+                [],
+                JSON_UNESCAPED_UNICODE
+            );
         }
     }
 
