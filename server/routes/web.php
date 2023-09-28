@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -15,4 +16,9 @@ Route::controller(UserController::class)->group(function () {
 
     Route::get('/users/login', 'login')->name('users.login');
     Route::post('/users/authenticate', 'authenticate')->name('users.authenticate');
+});
+
+
+Route::controller(ServiceController::class)->group(function () {
+    Route::get('/services', 'index')->middleware('auth')->name('services.index');
 });
