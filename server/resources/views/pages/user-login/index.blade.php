@@ -33,8 +33,8 @@
                 </div>
 
                 <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="remember">
-                    <label class="form-check-label" for="remember" name='remember'>Lembrar de mim</label>
+                    <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                    <label class="form-check-label" for="remember">Lembrar de mim</label>
                 </div>
 
                 <div class="d-grid gap-2">

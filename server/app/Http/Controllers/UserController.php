@@ -113,6 +113,7 @@ class UserController extends Controller
         $request->validate([
             "email" => 'required',
             "password" => 'required',
+            'remember' => 'nullable',
         ]);
 
         try {

@@ -3,6 +3,7 @@ $('form[name="login-user"]').on("submit", function (event) {
     const user = {
         email: event.target.email_login.value,
         password: event.target.password_login.value,
+        remember: event.target.remember.checked,
     };
     $("#loading").css("display", "block");
     $("#login").css("display", "none");
