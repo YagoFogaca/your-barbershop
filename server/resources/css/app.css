@@ -1,13 +1,11 @@
 @import url("~bootstrap/css/bootstrap.min.css");
 @import url("~bootstrapIcons/bootstrap-icons.min.css");
 
+/* LAYOUT AUTH */
+
 main {
     min-height: 100vh;
     background-color: #e7e7e7;
-}
-
-main.main-variant {
-    min-height: calc(100vh - 76px);
 }
 
 section.container-auth {
@@ -34,10 +32,6 @@ div.active-process-block-flex {
     display: flex;
 }
 
-button#loading {
-    display: none;
-}
-
 nav.navbar-customize a.nav-link,
 nav.navbar-customize a.dropdown-item {
     color: #2c86fd;
@@ -45,4 +39,88 @@ nav.navbar-customize a.dropdown-item {
 
 .navbar-nav .nav-link.show {
     color: #2c86fd;
+}
+
+/* LAYOUT PLATFORM */
+
+main.main-variant {
+    min-height: calc(100vh - 76px);
+    padding-top: 35px;
+}
+
+section.container-platform {
+    width: 90%;
+    max-width: 1026px;
+    margin: 0px auto;
+    padding: 15px;
+    background-color: #f8f9fa;
+}
+
+article.header-infos {
+    border-bottom: 1px solid #adadad;
+    padding-bottom: 5px;
+}
+
+article.header-infos h4 {
+    margin: 0;
+}
+
+section.container-services {
+    margin-top: 35px;
+    overflow: auto;
+}
+
+/* ESTILO DO BOTÂO */
+button.btn-bd-primary {
+    background-color: #2c86fd !important;
+    color: #e7e7e7 !important;
+    transition: all 300ms ease-in;
+}
+
+button.btn-bd-primary:hover {
+    opacity: 0.8;
+    background-color: #2c86fd;
+    color: #e7e7e7;
+}
+
+/* LOADING */
+
+button#loading {
+    display: none;
+}
+
+/* ALERT */
+
+div.alert-display {
+    display: none;
+}
+
+/* TABELA DE EXIBIÇÂO */
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+td.width,
+th.width {
+    min-width: 125px;
+}
+
+td.active,
+th.active {
+    min-width: 75px;
+}
+
+th.config,
+td.config {
+    width: 45px !important;
 }

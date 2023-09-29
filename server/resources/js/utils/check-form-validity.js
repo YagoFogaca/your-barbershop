@@ -52,5 +52,17 @@ export function checkFormValidity(process) {
                 $("#continue").prop("disabled", true);
             }
             break;
+
+        case 4:
+            const nameServiceValid =
+                $('input[name="name_service"]').val().length >= 3;
+            const priceServiceValid =
+                $('input[name="price_service"]').val() >= 1;
+            if (nameServiceValid && priceServiceValid) {
+                $("#btn-create-service").prop("disabled", false);
+            } else {
+                $("#btn-create-service").prop("disabled", true);
+            }
+            break;
     }
 }

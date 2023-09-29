@@ -1,0 +1,48 @@
+@extends('layouts.platform.index')
+
+@section('title', 'Serviços')
+
+@section('content')
+    <article class="header-infos d-flex justify-content-between align-items-center">
+        <h4>Serviços</h4>
+        <button class="btn btn-bd-primary" id="create-service" data-bs-toggle="modal"
+            data-bs-target="#create-service-modal">Criar</button>
+    </article>
+
+    <section class="container-services">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th class="width">Nome</th>
+                    <th class="width">Preço</th>
+                    <th class="active">Ativo</th>
+                </tr>
+            </thead>
+
+            <tbody id="display-services">
+
+                @foreach ($services as $service)
+                    <tr>
+                        <td class="width">{{ $service['name'] }}</td>
+                        <td class="width">R$ {{ $service['price'] }}</td>
+                        <td class="active">{{ $service['status'] ? 'Ativo' : 'Desativado' }}</td>
+                        <td class="config">
+                            <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#">Editar</a></li>
+                                <li><a class="dropdown-item" href="#">Apagar</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+
+        </table>
+
+    </section>
+    @include('components.modal-create-service.index')
+@endsection
