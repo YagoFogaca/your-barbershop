@@ -8,4 +8,5 @@ import "./user-login/index";
 import "./utils/api-via-cep";
 import "./create-service/validate-inputs/index";
 import "./create-service/index";
+import "./delete-service/index";
 import.meta.glob(["../images/**"]);

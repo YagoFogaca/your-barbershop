@@ -90,5 +90,29 @@ class ServiceController extends Controller
     public function destroy(string $id)
     {
         //
+        try {
+            $service = Service::find($id);
+            $serviceDeleted = $service->delete();
+            if (!$serviceDeleted) {
+                throw new Exception("Erro ao processar solicitação", 1);
+            }
+
+            return response()->json(
+                [
+                    'message' => 'Serviço deletado com sucesso',
+                    'data' => ['id' => $id],
+                ],
+                200,
+                [],
+                JSON_UNESCAPED_UNICODE
+            );
+        } catch (Exception $error) {
+            return response()->json(
+                ['message' => $error->getMessage()],
+                400,
+                [],
+                JSON_UNESCAPED_UNICODE
+            );
+        }
     }
 }

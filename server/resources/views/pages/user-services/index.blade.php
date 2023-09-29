@@ -24,7 +24,7 @@
             <tbody id="display-services">
 
                 @foreach ($services as $service)
-                    <tr>
+                    <tr id="line-service-{{ $service['id'] }}">
                         <td class="width">{{ $service['name'] }}</td>
                         <td class="width">R$ {{ $service['price'] }}</td>
                         <td class="active">{{ $service['status'] ? 'Ativo' : 'Desativado' }}</td>
@@ -33,8 +33,9 @@
                                 <i class="bi bi-three-dots-vertical"></i>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="#">Editar</a></li>
-                                <li><a class="dropdown-item" href="#">Apagar</a></li>
+                                <li><button class="dropdown-item" href="#">Editar</button></li>
+                                <li><button class="dropdown-item" id="{{ $service['id'] }}"
+                                        name="delete-service">Apagar</button></li>
                             </ul>
                         </td>
                     </tr>
@@ -45,4 +46,5 @@
 
     </section>
     @include('components.modal-create-service.index')
+    @include('components.toast.index')
 @endsection

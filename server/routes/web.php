@@ -23,4 +23,6 @@ Route::controller(ServiceController::class)->group(function () {
     Route::get('/services', 'index')->middleware('auth')->name('services.index');
 
     Route::post('/services', 'store')->middleware('auth')->name('services.store');
+
+    Route::delete('/services/{id}', 'destroy')->middleware('auth')->name('services.destroy');
 });
