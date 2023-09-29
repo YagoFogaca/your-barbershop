@@ -24,7 +24,7 @@ $('form[name="create-service"]').on("submit", function (event) {
             console.log(response);
             const dataService = response.data;
             const lineTable = `
-            <tr>
+            <tr id="line-service-${dataService.id}">
                 <td class="width">${dataService.name}</td>
                 <td class="width">R$ ${dataService.price}</td>
                 <td class="active">${
@@ -35,8 +35,10 @@ $('form[name="create-service"]').on("submit", function (event) {
                         <i class="bi bi-three-dots-vertical"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#">Editar</a></li>
-                        <li><a class="dropdown-item" href="#">Apagar</a></li>
+                        <li><button class="dropdown-item" href="#">Editar</button></li>
+                        <li><button class="dropdown-item" id="${
+                            dataService.id
+                        }" name="delete-service">Apagar</button></li>
                     </ul>
                 </td>
             </tr>`;
@@ -44,6 +46,9 @@ $('form[name="create-service"]').on("submit", function (event) {
             $(".alert-display").css("display", "block");
             $('input[name="name_service"]').val("");
             $('input[name="price_service"]').val("");
+            setInterval(function () {
+                $(".alert-display").css("display", "none");
+            }, 10000);
         },
         error: function (response) {
             $("#loading").css("display", "none");
@@ -51,6 +56,25 @@ $('form[name="create-service"]').on("submit", function (event) {
             $("#invalid-create-service")
                 .html(response.responseJSON.message)
                 .css("display", "block");
+        },
+    });
+});
+
+$('button[name="delete-service"]').on("click", function (event) {
+    const id = $(this).attr("id");
+
+    $.ajax({
+        type: "DELETE",
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+        url: "/services/" + id,
+        success: function (response) {
+            const idElement = "#line-service-" + id;
+            $(idElement).remove();
+        },
+        error: function (response) {
+            console.log("error", response);
         },
     });
 });
