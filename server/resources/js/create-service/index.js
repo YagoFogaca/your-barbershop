@@ -5,7 +5,6 @@ $('form[name="create-service"]').on("submit", function (event) {
         name: event.target.name_service.value,
         price: event.target.price_service.value,
     };
-
     $("#loading").css("display", "block");
     $("#btn-create-service").css("display", "none");
 
@@ -53,28 +52,12 @@ $('form[name="create-service"]').on("submit", function (event) {
         error: function (response) {
             $("#loading").css("display", "none");
             $("#btn-create-service").css("display", "block");
+            if (response.status === 419) {
+                return window.location.reload(true);
+            }
             $("#invalid-create-service")
                 .html(response.responseJSON.message)
                 .css("display", "block");
-        },
-    });
-});
-
-$('button[name="delete-service"]').on("click", function (event) {
-    const id = $(this).attr("id");
-
-    $.ajax({
-        type: "DELETE",
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-        },
-        url: "/services/" + id,
-        success: function (response) {
-            const idElement = "#line-service-" + id;
-            $(idElement).remove();
-        },
-        error: function (response) {
-            console.log("error", response);
         },
     });
 });

@@ -14,6 +14,9 @@ $(document).on("click", 'button[name="delete-service"]', function (event) {
         },
         error: function (response) {
             console.log("error", response);
+            if (response.status === 419) {
+                return window.location.reload(true);
+            }
         },
     });
 });
