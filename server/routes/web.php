@@ -24,5 +24,7 @@ Route::controller(ServiceController::class)->group(function () {
 
     Route::post('/services', 'store')->middleware('auth')->name('services.store');
 
+    Route::patch('/services/{id}', 'update')->middleware('auth')->name('services.update');
+
     Route::delete('/services/{id}', 'destroy')->middleware('auth')->name('services.destroy');
 });

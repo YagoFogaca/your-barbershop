@@ -61,27 +61,51 @@ class ServiceController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $request->validate([
+            "name" => "nullable|min:3",
+            "price" => "nullable|numeric"
+        ]);
+
+        try {
+
+            $service = Service::find($id);
+            if (!$service) {
+                throw new Exception("Serviço não encontrado", 1);
+            }
+
+            $serviceUpdate = [
+                "name" => $request->input('name') ?? $service['name'],
+                "price" => $request->input('price') ?? $service['price']
+            ];
+
+            $serviceUpdated = $service->update($serviceUpdate);
+            if (!$serviceUpdated) {
+                throw new Exception("Serviço não foi atualizado", 1);
+            }
+
+            return response()->json(
+                [
+                    'message' => 'Serviço atualizado com sucesso',
+                    'data' => $serviceUpdate
+                ],
+                200,
+                [],
+                JSON_UNESCAPED_UNICODE
+            );
+        } catch (Exception $error) {
+            dd($error);
+            return response()->json(
+                ['message' => $error->getMessage()],
+                400,
+                [],
+                JSON_UNESCAPED_UNICODE
+            );
+        }
     }
 
     /**

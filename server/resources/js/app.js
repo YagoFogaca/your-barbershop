@@ -9,4 +9,10 @@ import "./utils/api-via-cep";
 import "./create-service/validate-inputs/index";
 import "./create-service/index";
 import "./delete-service/index";
+
+import "./edit-service/modal-id/index";
+import "./edit-service/validate-inputs/index";
+import "./edit-service/reset-modal/index";
+import "./edit-service/index";
+
 import.meta.glob(["../images/**"]);

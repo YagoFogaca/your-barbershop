@@ -24,8 +24,12 @@ $('form[name="create-service"]').on("submit", function (event) {
             const dataService = response.data;
             const lineTable = `
             <tr id="line-service-${dataService.id}">
-                <td class="width">${dataService.name}</td>
-                <td class="width">R$ ${dataService.price}</td>
+                <td class="width" id="line-service-name">${
+                    dataService.name
+                }</td>
+                <td class="width" id="line-service-price">R$ ${
+                    dataService.price
+                }</td>
                 <td class="active">${
                     dataService.status ? "Ativo" : "Desativado"
                 }</td>
@@ -34,7 +38,10 @@ $('form[name="create-service"]').on("submit", function (event) {
                         <i class="bi bi-three-dots-vertical"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><button class="dropdown-item" href="#">Editar</button></li>
+                        <li><button class="dropdown-item" data-bs-toggle="modal"
+                        data-bs-target="#edit-service-modal" id="edit-${
+                            dataService.id
+                        }">Editar</button></li>
                         <li><button class="dropdown-item" id="${
                             dataService.id
                         }" name="delete-service">Apagar</button></li>
