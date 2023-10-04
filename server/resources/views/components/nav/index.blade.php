@@ -10,24 +10,21 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Painel</a>
+                    <a class="nav-link" href="#">Agenda</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Funcioanrios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Agenda</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Serviços</a>
+                    <a class="nav-link" href={{ route('services.index') }}>Serviços</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle"role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Configuração
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#">Informações</a></li>
-                        <li><a class="dropdown-item" href="#">Segurança</a></li>
+                        <li><a class="dropdown-item" href={{ route('users.index', ['id' => Auth::id()]) }}>Conta</a>
+                        </li>
                         <li><a class="dropdown-item" href="#">Horario de funcionamento</a></li>
                         <li>
                             <hr class="dropdown-divider">

@@ -6,18 +6,17 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
-use SebastianBergmann\CodeCoverage\Report\Xml\Report;
 
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display user information.
      */
-    public function index()
+    public function index(string $id)
     {
-        //
+        $user = User::find($id);
+        return view('pages.account-setup.index', ['user' =>  $user]);
     }
 
     /**

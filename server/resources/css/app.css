@@ -124,3 +124,13 @@ th.config,
 td.config {
     width: 45px !important;
 }
+
+/* Tabs Styles */
+
+div#v-pills-tab .nav-link {
+    color: #2c86fd;
+}
+
+div.tab-content > .active {
+    padding: 20px 0px 0px;
+}
