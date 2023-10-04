@@ -10,6 +10,10 @@ use App\Http\Controllers\UserController;
 |--------------------------------------------------------------------------
 */
 
+Route::get('/', function () {
+    return redirect()->route('users.create');
+});
+
 Route::controller(UserController::class)->group(function () {
     Route::get('/users/create', 'create')->name('users.create');
     Route::post('/users', 'store')->name('users.store');

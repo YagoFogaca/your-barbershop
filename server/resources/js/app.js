@@ -1,11 +1,15 @@
 import "./bootstrap";
-import "./user-create/validate-inputs/process-block-one";
-import "./user-create/validate-inputs/process-block-two";
-import "./user-create/validate-inputs/process-block-three";
+// Validação de todos os inputs para criar usuário
+import "./user-create/validate-inputs/index";
+// Troca de bloco de inputs do formulário para criar usuário
 import "./user-create/process-block/index";
+// Envio do formulário para criar usuário
 import "./user-create/user-create";
+// Login usuário
 import "./user-login/index";
-import "./utils/api-via-cep";
+// Api para busca do cep
+import "./utils/apis/api-via-cep";
+
 import "./create-service/validate-inputs/index";
 import "./create-service/index";
 import "./delete-service/index";

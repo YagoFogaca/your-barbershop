@@ -134,8 +134,10 @@
                 </div>
 
                 <div class="d-grid gap-2">
-                    <button type="button" disabled class="btn btn-primary" id="continue">Continuar</button>
-                    <button class="btn btn-primary" type="button" disabled id="loading">
+                    <button type="button" class="btn btn-bd-primary" id="continue-user-create">Continuar</button>
+                    <button type="submit" class="btn btn-bd-primary" id="user-create"
+                        style="display: none">Criar</button>
+                    <button class="btn btn-bd-primary" type="button" disabled id="loading">
                         <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
                         <span role="status">Loading...</span>
                     </button>

@@ -19,7 +19,7 @@ $('form[name="create-user"]').on("submit", function (event) {
     };
 
     $("#loading").css("display", "block");
-    $("#continue").css("display", "none");
+    $("#user-create").css("display", "none");
     $.ajax({
         type: "POST",
         headers: {
@@ -30,15 +30,16 @@ $('form[name="create-user"]').on("submit", function (event) {
         dataType: "json",
         contentType: "application/json",
         success: function (response) {
-            $("#continue").css("display", "block");
+            $("#user-create").css("display", "block");
             $("#loading").css("display", "none");
             window.location.assign("/");
         },
         error: function (response) {
-            $("#continue").css("display", "block");
+            console.log(response);
+            $("#user-create").css("display", "block");
             $("#loading").css("display", "none");
             $("#invalid-create-user")
-                .html(response.responseText)
+                .html(response.responseJSON.message)
                 .css("display", "block");
             reset();
         },
