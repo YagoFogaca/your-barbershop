@@ -95,9 +95,19 @@ class UserController extends Controller
                 throw new Exception('LOGIN_FAILED');
             }
 
-            return response()->json('Usuário criado com sucesso', 200);
+            return response()->json(
+                'Usuário criado com sucesso',
+                200,
+                [],
+                JSON_UNESCAPED_UNICODE
+            );
         } catch (Exception $error) {
-            return response()->json($error->getMessage(), 404);
+            return response()->json(
+                $error->getMessage(),
+                404,
+                [],
+                JSON_UNESCAPED_UNICODE
+            );
         }
     }
 
