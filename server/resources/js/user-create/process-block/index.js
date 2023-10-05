@@ -44,6 +44,7 @@ $("#continue-user-create").on("click", function () {
 
         //Remove mensagem de erro caso os inputs estejam validados
         $("#invalid-create-user").html("").css("display", "none");
+        $("#number-process").html(currentBlockIndex + 1);
         return true;
     }
 });
