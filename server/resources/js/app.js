@@ -9,6 +9,10 @@ import "./user-create/user-create";
 import "./user-login/validate-inputs/index";
 // Login usuário
 import "./user-login/index";
+// Validação dos inputs para atualizar informações pessoais do usuário
+import "./user-update/personal-information/validate-inputs/index";
+// Atualizar informações pessoais do usuário
+import "./user-update/personal-information/index";
 // Api para busca do cep
 import "./utils/apis/api-via-cep";
 
