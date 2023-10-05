@@ -5,6 +5,8 @@ import "./user-create/validate-inputs/index";
 import "./user-create/process-block/index";
 // Envio do formulário para criar usuário
 import "./user-create/user-create";
+// Validação dos inputs para login do usuário
+import "./user-login/validate-inputs/index";
 // Login usuário
 import "./user-login/index";
 // Api para busca do cep
