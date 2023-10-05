@@ -3,6 +3,7 @@
 @section('title', 'Configuração da conta')
 
 @section('content')
+    {{-- @dd($user) --}}
     <div>
         <div class="nav nav-tabs" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
@@ -20,7 +21,7 @@
 
             <div class="tab-pane fade show active" id="personal-information" role="tabpanel"
                 aria-labelledby="v-pills-home-tab" tabindex="0">
-                @include('components.form-edit-personal-information.index')
+                @include('components.form-edit-personal-information.index', $user)
             </div>
 
             <div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
