@@ -170,6 +170,68 @@ class UserController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate(
+            [
+                "owner_name" => 'nullable|min:3',
+                "company_name" => 'nullable|min:3',
+                "email" => 'nullable|email|unique:users',
+                "telephone" => 'nullable|min:11',
+                "cep" => 'nullable|min:8',
+                "address" => 'nullable',
+                "number" => 'nullable',
+                "neighborhood" => 'nullable',
+                "city" => 'nullable',
+                "state" => 'nullable',
+                "complement" => 'nullable',
+                "password" => 'nullable|min:8',
+            ],
+            [
+                "owner_name" => 'Nome do proprietário inválido',
+                "company_name" => 'Nome da empresa inválido',
+                "email" => [
+                    'unique' => 'Email já em uso',
+                    'email' => 'Formato inválido'
+                ],
+                "telephone" => 'Telefone inválido',
+                "cep" => 'CEP inválido',
+                "address" => 'Rua inválido',
+                "number" => 'Número inválido',
+                "neighborhood" => 'Bairro inválido',
+                "city" => 'Cidade inválida',
+                "state" => 'Estado inválido',
+                "password" => 'Senha inválido',
+            ]
+        );
+
+        try {
+            $user = $request->all();
+            $userUpdate = User::find($id);
+            if (!$userUpdate) {
+                throw new Exception("Usuário não foi encontrado", 1);
+            }
+
+            $userUpdated = $userUpdate->update($user);
+            if (!$userUpdated) {
+                throw new Exception("Usuário não foi atualizado", 2);
+            }
+
+            return response()->json([
+                "success" => true,
+                "response" => [
+                    "data" => $userUpdate,
+                    "message" => 'Usuário atualizado com sucesso'
+                ]
+            ], 200, [], JSON_UNESCAPED_UNICODE);
+        } catch (Exception $error) {
+            //throw $th;
+            return response()->json([
+                "error" => true,
+                "response" => [
+                    "data" => $userUpdate,
+                    "message" => $error->getMessage()
+                ]
+            ], 400, [], JSON_UNESCAPED_UNICODE);
+        }
     }
 
     /**

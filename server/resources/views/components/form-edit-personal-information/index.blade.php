@@ -2,10 +2,13 @@
     <div class="invalid-feedback" id="invalid-update-personal-information-user">
 
     </div>
+    <div id="liveAlertPlaceholder" class="alert alert-success alert-display" role="alert">
+        <i class="bi bi-check2-circle"></i> Informações atualizadas com sucesso
+    </div>
     <div class="mb-3 has-validation">
         <label for="owner-name-edit" class="form-label">Nome do Proprietário</label>
-        <input type="text" class="form-control" id="owner-name-edit" name="owner_name_edit" placeholder="Nome completo"
-            value="{{ $user['owner_name'] }}">
+        <input type="text" class="form-control" id="owner-name-edit" name="owner_name_edit"
+            placeholder="Nome completo" value="{{ $user['owner_name'] }}">
         <div class="invalid-feedback">
             Nome inválido.
         </div>
@@ -36,6 +39,10 @@
         <div class="invalid-feedback">
             Número de celular inválido.
         </div>
+    </div>
+
+    <div>
+        <input type="hidden" value="{{ $user['id'] }}" name="user_id">
     </div>
 
     <div class="d-grid gap-2">

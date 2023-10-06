@@ -22,6 +22,8 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/users/authenticate', 'authenticate')->name('users.authenticate');
 
     Route::get('/users/{id}', 'index')->middleware('auth')->name('users.index');
+
+    Route::patch('/users/{id}', 'update')->middleware('auth')->name('users.update');
 });
 
 
