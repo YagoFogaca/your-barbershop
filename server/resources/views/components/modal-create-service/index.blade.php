@@ -10,7 +10,8 @@
                     <div class="invalid-feedback" id="invalid-create-service">
 
                     </div>
-                    <div id="liveAlertPlaceholder" class="alert alert-success alert-display" role="alert">
+                    <div id="liveAlertPlaceholder" class="alert alert-success alert-display alert-service-create"
+                        role="alert">
                         <i class="bi bi-check2-circle"></i> Serviço criado com sucesso
                     </div>
                     <div class="mb-3 has-validation">

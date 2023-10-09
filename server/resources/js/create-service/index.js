@@ -49,11 +49,11 @@ $('form[name="create-service"]').on("submit", function (event) {
                 </td>
             </tr>`;
             $("#display-services").append(lineTable);
-            $(".alert-display").css("display", "block");
+            $(".alert-service-create").css("display", "block");
             $('input[name="name_service"]').val("");
             $('input[name="price_service"]').val("");
             setInterval(function () {
-                $(".alert-display").css("display", "none");
+                $(".alert-service-create").css("display", "none");
             }, 10000);
         },
         error: function (response) {
