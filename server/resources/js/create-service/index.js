@@ -20,7 +20,6 @@ $('form[name="create-service"]').on("submit", function (event) {
         success: function (response) {
             $("#loading").css("display", "none");
             $("#btn-create-service").css("display", "block");
-            console.log(response);
             const dataService = response.data;
             const lineTable = `
             <tr id="line-service-${dataService.id}">
