@@ -4,6 +4,8 @@ function resetModal() {
 }
 
 const myModalEl = document.getElementById("edit-service-modal");
-myModalEl.addEventListener("hidden.bs.modal", (event) => {
-    resetModal();
-});
+if (myModalEl) {
+    myModalEl.addEventListener("hidden.bs.modal", (event) => {
+        resetModal();
+    });
+}
