@@ -85,7 +85,8 @@ button.btn-bd-primary:hover {
 
 /* LOADING */
 
-button#loading {
+button#loading,
+button#loading-address {
     display: none;
 }
 

@@ -25,7 +25,8 @@
             </div>
 
             <div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
-                Endereço</div>
+                @include('components.form-edit-address.index', $user)
+            </div>
 
             <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="v-pills-messages-tab" tabindex="0">
                 Segurança</div>
