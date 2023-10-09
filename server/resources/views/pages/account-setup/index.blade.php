@@ -29,7 +29,8 @@
             </div>
 
             <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="v-pills-messages-tab" tabindex="0">
-                Segurança</div>
+                @include('components.form-edit-security.index', $user)
+            </div>
 
         </div>
     </div>

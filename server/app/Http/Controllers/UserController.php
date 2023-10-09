@@ -157,11 +157,47 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Atualização da senha
      */
-    public function edit(string $id)
+    public function password(Request $request)
     {
         //
+        $request->validate(
+            [
+                'password' => 'required|confirmed|min:8',
+                'user_id' => 'required'
+            ],
+        );
+
+        try {
+            $data = [
+                "user_id" => $request->input('user_id'),
+                'password' => Hash::make($request->input('password')),
+            ];
+            $user = User::find($data['user_id']);
+            if (!$user) {
+                throw new Exception("Usuário não foi encontrado", 1);
+            }
+
+            $userUpdated = $user->update(['password' => $data['password']]);
+            if (!$userUpdated) {
+                throw new Exception("Senha não foi atualizada", 2);
+            }
+
+            return response()->json([
+                "success" => true,
+                "response" => [
+                    "message" => 'Senha atualizada com sucesso'
+                ]
+            ], 200, [], JSON_UNESCAPED_UNICODE);
+        } catch (Exception $error) {
+            return response()->json([
+                "error" => true,
+                "response" => [
+                    "message" => 'Informações invalidas',
+                ]
+            ], 400, [], JSON_UNESCAPED_UNICODE);
+        }
     }
 
     /**

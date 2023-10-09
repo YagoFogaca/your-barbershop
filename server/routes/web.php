@@ -24,6 +24,8 @@ Route::controller(UserController::class)->group(function () {
     Route::get('/users/{id}', 'index')->middleware('auth')->name('users.index');
 
     Route::patch('/users/{id}', 'update')->middleware('auth')->name('users.update');
+
+    Route::put('/users/password', 'password')->middleware('auth')->name('users.password');
 });
 
 

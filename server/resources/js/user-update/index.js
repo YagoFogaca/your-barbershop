@@ -7,3 +7,7 @@ import "./personal-information/index";
 // Atualização do endereço
 import "./address/validate-inputs/index";
 import "./address/index";
+
+// Atualização da senha
+import "./security/validate-inputs/index";
+import "./security/index";
