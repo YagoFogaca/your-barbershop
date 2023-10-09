@@ -148,6 +148,12 @@ class UserController extends Controller
         }
     }
 
+    public function logout()
+    {
+        Auth::logout();
+        return response()->redirectToRoute('users.login');
+    }
+
     /**
      * Display the specified resource.
      */

@@ -20,6 +20,7 @@ Route::controller(UserController::class)->group(function () {
 
     Route::get('/users/login', 'login')->name('users.login');
     Route::post('/users/authenticate', 'authenticate')->name('users.authenticate');
+    Route::get('/users/logout', 'logout')->middleware('auth')->name('users.logout');
 
     Route::get('/users/{id}', 'index')->middleware('auth')->name('users.index');
 
