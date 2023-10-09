@@ -6,7 +6,7 @@ $('form[name="user-address"]').on("submit", function (event) {
             .css("display", "none");
     }
     const address = {
-        cep: event.target.cep_edit.value,
+        cep: event.target.cep.value,
         address: event.target.address.value,
         number: event.target.number_edit.value,
         complement: event.target.complement.value,

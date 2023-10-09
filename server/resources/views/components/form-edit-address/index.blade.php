@@ -8,7 +8,7 @@
 
     <div class="mb-3 col-md-6">
         <label for="cep" class="form-label">CEP</label>
-        <input type="text" class="form-control" id="cep" aria-describedby="cep_user" name="cep_edit"
+        <input type="text" class="form-control" id="cep" aria-describedby="cep_user" name="cep"
             placeholder="00000-000" required>
         <div class="invalid-feedback">
             Número do CEP inválido.
