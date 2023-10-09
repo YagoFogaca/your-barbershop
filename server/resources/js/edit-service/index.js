@@ -27,7 +27,7 @@ $('form[name="edit-service"]').on("submit", function (event) {
         success: function (response) {
             $("#loading-edit-service").css("display", "none");
             $("#btn-edit-service").css("display", "block");
-            $(".alert-display").css("display", "block");
+            $(".alert-service-edit").css("display", "block");
             $(`#line-service-${serviceUpdate.id} > #line-service-name`).html(
                 response.data.name
             );
@@ -35,7 +35,7 @@ $('form[name="edit-service"]').on("submit", function (event) {
                 "R$ " + response.data.price
             );
             setInterval(function () {
-                $(".alert-display").css("display", "none");
+                $(".alert-service-edit").css("display", "none");
             }, 10000);
         },
         error: function (response) {

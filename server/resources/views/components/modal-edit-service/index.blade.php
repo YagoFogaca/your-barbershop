@@ -11,7 +11,8 @@
 
                     </div>
 
-                    <div id="liveAlertPlaceholder" class="alert alert-success alert-display" role="alert">
+                    <div id="liveAlertPlaceholder" class="alert alert-success alert-display alert-service-edit"
+                        role="alert">
                         <i class="bi bi-check2-circle"></i> Serviço atualizado com sucesso
                     </div>
                     <div class="mb-3 has-validation">
