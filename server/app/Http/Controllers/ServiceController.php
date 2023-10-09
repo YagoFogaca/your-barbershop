@@ -60,6 +60,40 @@ class ServiceController extends Controller
         }
     }
 
+    /*
+    * Buscar serviço pelo id
+    */
+    public function show(string $id)
+    {
+        //
+        try {
+            $service = Service::find($id);
+            if (!$service) {
+                throw new Exception("Serviço não encontrado", 1);
+            }
+            return response()->json(
+                [
+                    "success" => true,
+                    'message' => 'Serviço encontrado com sucesso',
+                    'data' => $service
+                ],
+                200,
+                [],
+                JSON_UNESCAPED_UNICODE
+            );
+        } catch (Exception $error) {
+            return response()->json(
+                [
+                    'error' => true,
+                    'message' => 'Serviço não encontrado'
+                ],
+                400,
+                [],
+                JSON_UNESCAPED_UNICODE
+            );
+        }
+    }
+
     /**
      * Update the specified resource in storage.
      */
@@ -68,11 +102,11 @@ class ServiceController extends Controller
 
         $request->validate([
             "name" => "nullable|min:3",
-            "price" => "nullable|numeric"
+            "price" => "nullable|numeric",
+            "status" => "nullable|boolean",
         ]);
 
         try {
-
             $service = Service::find($id);
             if (!$service) {
                 throw new Exception("Serviço não encontrado", 1);
@@ -80,7 +114,8 @@ class ServiceController extends Controller
 
             $serviceUpdate = [
                 "name" => $request->input('name') ?? $service['name'],
-                "price" => $request->input('price') ?? $service['price']
+                "price" => $request->input('price') ?? $service['price'],
+                "status" => $request->input('status') ? 'active' : 'inactive'
             ];
 
             $serviceUpdated = $service->update($serviceUpdate);
@@ -98,9 +133,8 @@ class ServiceController extends Controller
                 JSON_UNESCAPED_UNICODE
             );
         } catch (Exception $error) {
-            dd($error);
             return response()->json(
-                ['message' => $error->getMessage()],
+                ['message' => 'Informações invalidas'],
                 400,
                 [],
                 JSON_UNESCAPED_UNICODE

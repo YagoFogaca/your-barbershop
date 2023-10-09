@@ -91,6 +91,15 @@ button#loading-security {
     display: none;
 }
 
+/* SPINNER LOADING */
+
+div.spinner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+}
+
 /* ALERT */
 
 div.alert-display {
@@ -135,4 +144,10 @@ div#v-pills-tab .nav-link {
 
 div.tab-content > .active {
     padding: 20px 0px 0px;
+}
+
+/* FORM UPDATE SERVICE */
+
+form[name="edit-service"] {
+    display: none;
 }

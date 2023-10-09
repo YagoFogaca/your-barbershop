@@ -1,17 +1,29 @@
 $('form[name="edit-service"]').on("submit", function (event) {
     event.preventDefault();
 
+    if ($("#invalid-edit-service").css("display") !== "none") {
+        $("#invalid-edit-service").html("").css("display", "none");
+    }
+
     const serviceUpdate = {
         id: event.target.service_id.value,
         name: event.target.name_service_edit.value,
         price: event.target.price_service_edit.value,
+        status: event.target.status.checked,
     };
-
-    if (serviceUpdate.name === "" && serviceUpdate.price === "") {
+    const validatedStatus =
+        event.target.status.value === "active" ? true : false;
+    if (
+        serviceUpdate.name === "" &&
+        serviceUpdate.price === "" &&
+        validatedStatus === serviceUpdate.status
+    ) {
         $("#invalid-edit-service")
             .html("Pelo menos um dos campos devem ser preenchidos")
             .css("display", "block");
+        return false;
     }
+
     $("#loading-edit-service").css("display", "block");
     $("#btn-edit-service").css("display", "none");
     $.ajax({
@@ -33,6 +45,9 @@ $('form[name="edit-service"]').on("submit", function (event) {
             );
             $(`#line-service-${serviceUpdate.id} > #line-service-price`).html(
                 "R$ " + response.data.price
+            );
+            $(`#line-service-${serviceUpdate.id} > #line-service-status`).html(
+                response.data.status === "active" ? "Ativo" : "Desativado"
             );
             setInterval(function () {
                 $(".alert-service-edit").css("display", "none");

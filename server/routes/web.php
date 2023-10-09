@@ -32,6 +32,7 @@ Route::controller(UserController::class)->group(function () {
 
 Route::controller(ServiceController::class)->group(function () {
     Route::get('/services', 'index')->middleware('auth')->name('services.index');
+    Route::get('/services/{id}', 'show')->middleware('auth')->name('services.show');
 
     Route::post('/services', 'store')->middleware('auth')->name('services.store');
 

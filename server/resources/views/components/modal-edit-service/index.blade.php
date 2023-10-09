@@ -36,12 +36,19 @@
                         </div>
                     </div>
 
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="status" name="status"
+                            checked value="">
+                        <label class="form-check-label" for="status">Ative ou desative o serviço para
+                            seus clientes</label>
+                    </div>
+
                     <div>
                         <input type="hidden" name="service_id">
                     </div>
 
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-bd-primary" disabled id="btn-edit-service">Editar</button>
+                        <button type="submit" class="btn btn-bd-primary" id="btn-edit-service">Editar</button>
                         <button class="btn btn-bd-primary" type="button" disabled style="display: none"
                             id="loading-edit-service">
                             <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
@@ -49,6 +56,12 @@
                         </button>
                     </div>
                 </form>
+
+                <div class="spinner-container">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -27,7 +27,8 @@
                     <tr id="line-service-{{ $service['id'] }}">
                         <td class="width" id="line-service-name">{{ $service['name'] }}</td>
                         <td class="width" id="line-service-price">R$ {{ $service['price'] }}</td>
-                        <td class="active">{{ $service['status'] ? 'Ativo' : 'Desativado' }}</td>
+                        <td class="active" id="line-service-status">
+                            {{ $service['status'] === 'active' ? 'Ativo' : 'Desativado' }}</td>
                         <td class="config">
                             <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-three-dots-vertical"></i>
