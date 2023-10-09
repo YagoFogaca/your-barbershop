@@ -227,8 +227,7 @@ class UserController extends Controller
             return response()->json([
                 "error" => true,
                 "response" => [
-                    "data" => $userUpdate,
-                    "message" => $error->getMessage()
+                    "message" => 'Informações invalidas'
                 ]
             ], 400, [], JSON_UNESCAPED_UNICODE);
         }
