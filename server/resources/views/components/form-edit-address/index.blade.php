@@ -8,7 +8,7 @@
 
     <div class="mb-3 col-md-6">
         <label for="cep" class="form-label">CEP</label>
-        <input type="text" class="form-control" id="cep" aria-describedby="cep_user" name="cep"
+        <input type="text" class="form-control" id="cep" aria-describedby="cep_user" name="cep_edit"
             placeholder="00000-000" required>
         <div class="invalid-feedback">
             Número do CEP inválido.
@@ -23,7 +23,7 @@
 
     <div class="mb-3 col-md-6">
         <label for="number" class="form-label">Número</label>
-        <input type="text" class="form-control" id="number" aria-describedby="number_user" name="number"
+        <input type="text" class="form-control" id="number" aria-describedby="number_user" name="number_edit"
             placeholder="000" required>
         <div class="invalid-feedback">
             Número da Barbearia/Salão.
